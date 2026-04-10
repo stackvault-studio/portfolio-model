@@ -32,18 +32,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          mkdir -p ~/.m2
-          cat > ~/.m2/settings.xml << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<settings>
-  <servers>
-    <server>
-      <id>github</id>
-      <username>${{ github.actor }}</username>
-      <password>${{ secrets.GITHUB_TOKEN }}</password>
-    </server>
-  </servers>
-</settings>
-EOF
-          mvn deploy -DskipTests
+        run: mvn deploy -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
