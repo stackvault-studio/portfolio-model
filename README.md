@@ -1,5 +1,7 @@
 # portfolio-model
 
+[![publish](https://github.com/stackvault-studio/portfolio-model/actions/workflows/publish.yml/badge.svg)](https://github.com/stackvault-studio/portfolio-model/actions/workflows/publish.yml)
+
 ## Project Description
 
 Shared model/JPA entities repository for the portfolio application. Contains all domain entities, DTOs, and database mappings used by the backend.
