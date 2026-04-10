@@ -43,5 +43,5 @@ jobs:
       - name: Publish to GitHub Packages
         run: mvn deploy -s settings.xml -DskipTests
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_ACTOR: ${{ vars.GH_ACTOR }}
