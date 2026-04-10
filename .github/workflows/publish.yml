@@ -34,8 +34,11 @@ jobs:
             echo "version=1.0.0-staging-SNAPSHOT" >> $GITHUB_OUTPUT
           fi
 
-      - name: Set version
-        run: mvn versions:set -DnewVersion=${{ steps.version.outputs.version }} -DgenerateBackupPoms=false
+      - name: Update pom.xml version
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          sed -i "s/<version>.*<\/version>/<version>$VERSION<\/version>/" pom.xml
+          cat pom.xml | grep "<version>"
 
       - name: Build & Test
         run: mvn clean package -DskipTests=false
